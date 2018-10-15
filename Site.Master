@@ -1,0 +1,125 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title="Geeks" %> - Finger Login  </title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body >
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="LoginCode.aspx">Welcome to Geeks </a>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                       
+                        <li><a runat="server" href="LoginCode.aspx">Login</a></li>
+                        <li><a runat="server" href="RegisterCode.aspx">Sign Up</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Geeks</p>
+            </footer>
+        </div>
+    </form>
+<script type="text/javascript">
+    // nice global area, so that only 1 location, contains this information
+    //    var secugen_lic = "hE/78I5oOUJnm5fa5zDDRrEJb5tdqU71AVe+/Jc2RK0=";   // webapi.secugen.com
+    var secugen_lic = "";
+
+    function ErrorCodeToString(ErrorCode) {
+        var Description;
+        switch (ErrorCode) {
+            // 0 - 999 - Comes from SgFplib.h
+            // 1,000 - 9,999 - SGIBioSrv errors 
+            // 10,000 - 99,999 license errors
+            case 51:
+                Description = "System file load failure";
+                break;
+            case 52:
+                Description = "Sensor chip initialization failed";
+                break;
+            case 53:
+                Description = "Device not found";
+                break;
+            case 54:
+                Description = "Fingerprint image capture timeout";
+                break;
+            case 55:
+                Description = "No device available";
+                break;
+            case 56:
+                Description = "Driver load failed";
+                break;
+            case 57:
+                Description = "Wrong Image";
+                break;
+            case 58:
+                Description = "Lack of bandwidth";
+                break;
+            case 59:
+                Description = "Device Busy";
+                break;
+            case 60:
+                Description = "Cannot get serial number of the device";
+                break;
+            case 61:
+                Description = "Unsupported device";
+                break;
+            case 63:
+                Description = "SgiBioSrv didn't start; Try image capture again";
+                break;
+            default:
+                Description = "Unknown error code or Update code to reflect latest result";
+                break;
+        }
+        return Description;
+    }
+
+</script>
+</body>
+</html>
